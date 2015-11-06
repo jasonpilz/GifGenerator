@@ -5,4 +5,10 @@ Rails.application.routes.draw do
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
 
+  resources :gifs, only: [:index, :show]
+
+  namespace :admin do
+    resources :gifs, only: [:new, :create]
+  end
+
 end

@@ -1,0 +1,7 @@
+<h1>Add a Gif!</h1>
+
+<%= form_tag(admin_gifs_path) do %>
+  <%= label_tag :search %>
+  <%= text_field_tag :search %>
+  <%= submit_tag "Generate Gif" %>
+<% end %>
