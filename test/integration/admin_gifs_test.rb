@@ -17,6 +17,4 @@ class AdminGifsTest < ActionDispatch::IntegrationTest
     click_button "Generate Gif"
     assert page.has_content?("puppy")
   end
-
-
 end

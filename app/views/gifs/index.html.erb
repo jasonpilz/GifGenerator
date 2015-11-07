@@ -1,0 +1,6 @@
+<h1>Index of Gifs</h1>
+
+<% @gifs.each do |gif| %>
+  <%= gif.category.title %>
+  <img src="<%= gif.image_path %>" alt="<%= gif.category.title %>" />
+<% end %>  
