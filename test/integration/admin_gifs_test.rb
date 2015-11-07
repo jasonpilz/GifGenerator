@@ -15,7 +15,7 @@ class AdminGifsTest < ActionDispatch::IntegrationTest
     visit new_admin_gif_path
     fill_in "search", with: "puppy"
     click_button "Generate Gif"
-
+save_and_open_page
     assert page.has_content?("puppy")
   end
 
