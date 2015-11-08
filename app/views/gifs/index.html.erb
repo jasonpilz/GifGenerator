@@ -1,6 +1,13 @@
 <h1>Index of Gifs</h1>
 
 <% @gifs.each do |gif| %>
-  <%= gif.category.title %>
-  <img src="<%= gif.image_path %>" alt="<%= gif.category.title %>" />
-<% end %>  
+  <div>
+    <%= gif.category.title %>
+    <img src="<%= gif.image_path %>" alt="<%= gif.category.title %>" />
+    <% if current_user.favorites.exists?(gif_id: gif.id) %>
+      <%= link_to "UnFavorite", favorite_path(id: current_user.favorites.find_by(gif_id: gif.id).id), method: :delete %>
+    <% else %>
+      <%= link_to "Favorite", favorites_path(gif_id: gif.id), method: :post %>
+    <% end %>
+  </div>
+<% end %>

@@ -1,0 +1,5 @@
+<h1>Categories Index</h1>
+
+<% @categories.each do |cat| %>
+  <%= cat.title %> <%= link_to "Delete", admin_category_path(cat), method: :delete, id: "cat_#{cat.title}"  %>
+<% end %>

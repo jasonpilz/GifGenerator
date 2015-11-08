@@ -3,4 +3,7 @@ class User < ActiveRecord::Base
   validates :username, presence: true,
                        uniqueness: true
   enum role: %w(default admin)
+
+  has_many :favorites, dependent: :destroy
+  has_many :gifs, through: :favorites
 end

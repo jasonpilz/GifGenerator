@@ -6,9 +6,11 @@ Rails.application.routes.draw do
   delete '/logout', to: 'sessions#destroy'
 
   resources :gifs, only: [:index, :show]
+  resources :favorites, only: [:new, :create, :destroy]
 
   namespace :admin do
     resources :gifs, only: [:new, :create]
+    resources :categories, only: [:new, :create, :index, :destroy]
   end
 
 end

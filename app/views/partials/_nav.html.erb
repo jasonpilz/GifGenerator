@@ -1,6 +1,7 @@
 <% if current_admin? %>
   <%= link_to "Logout", logout_path, method: :delete %>
   <%= link_to "Create Gif", new_admin_gif_path %>
+  <%= link_to "Create Category", new_admin_category_path %>
 <% elsif current_user %>
   <%= link_to "Logout", logout_path, method: :delete %>
 <% else %>
