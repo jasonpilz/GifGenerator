@@ -7,6 +7,7 @@ class SessionsController < ApplicationController
     @user = User.find_by(username: params[:session][:username])
     if @user && @user.authenticate(params[:session][:password])
       session[:user_id] = @user.id
+      flash[:login_success] = "Welcome, #{@user.username}!"
       redirect_to gifs_path
     else
       flash[:invalid_login] = "Nope....that's not right. Try again."

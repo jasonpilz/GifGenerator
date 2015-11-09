@@ -1,1 +1,27 @@
 <h1>Welcome, <%= @user.username %>!</h1>
+
+
+<div class="center">
+<% @gifs.each_slice(4) do |chunk| %>
+  <div class="row ">
+    <% chunk.each do |gif| %>
+    <div class="col s3">
+      <div class="card">
+           <div class="card-image">
+               <img src="<%= gif.image_path %>" alt="<%= gif.category.title %>" style="max-width:150px; padding: 25px;"/></img>
+           </div>
+           <div class="card-action center-align">
+             <%= gif.category.title %>
+             <% if current_user.nil? %>
+             <% elsif current_user.favorites.exists?(gif_id: gif.id) %>
+               <%= link_to "-", favorite_path(id: current_user.favorites.find_by(gif_id: gif.id).id), method: :delete, class:"btn-floating red" %>
+             <% else %>
+               <%= link_to "+", favorites_path(gif_id: gif.id), method: :post, class: "btn-floating" %>
+             <% end %>
+           </div>
+         </div>
+    </div>
+    <% end %>
+  </div>
+<% end %>
+</div>

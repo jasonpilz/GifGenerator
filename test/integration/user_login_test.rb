@@ -11,7 +11,7 @@ class UserLoginTest < ActionDispatch::IntegrationTest
 
   test "a registered user can log into their account" do
     login_user
-
+    save_and_open_page
     assert page.has_content?("Welcome, MyName!")
   end
 
@@ -45,6 +45,7 @@ class UserLoginTest < ActionDispatch::IntegrationTest
 
       click_link "Logout"
 
+      save_and_open_page
       assert_equal login_path, current_path
       assert page.has_content?("You've been logged out")
     end

@@ -16,6 +16,10 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    current_user = User.find(session[:user_id])
+    favorites = current_user.favorites
+    gif_ids = favorites.map {|data| data.gif_id}
+    @gifs = Gif.find(gif_ids)
   end
 
   private

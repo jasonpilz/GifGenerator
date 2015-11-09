@@ -9,6 +9,13 @@ class FavoritesController < ApplicationController
     redirect_to gifs_path
   end
 
+  def show
+    user = User.find(session[:user_id])
+    favorites = user.favorites
+    gif_ids = favorites.map {|data| data.gif_id}
+    @gifs = Gif.find(gif_ids)
+  end
+
   def destroy
     Favorite.delete(params[:id])
     redirect_to gifs_path
